@@ -1,7 +1,13 @@
-import { saveLogin } from './lib/index.js'
-import { Router } from './Routes/router.js'
-import { PATHS } from './Routes/routes.js'
+import { changeView } from './View-Controller/index.js'
 
+const init = () => {
+    window.addEventListener('hashchange', () => changeView(window.location.hash))
+}
+
+window.addEventListener('load', init)
+
+/*
+import { saveLogin } from './lib/index.js'
 const login = document.getElementById('login')
 
 login.addEventListener('submit', (e) => {
@@ -16,18 +22,4 @@ login.addEventListener('submit', (e) => {
     saveLogin.reset();
 
 })
-
-const signUp = document.getElementById('signUp')
-signUp.addEventListener('click', (e) =>
-    Router.load('signUp')
-)
-
-const continueWithGoogle = document.getElementById('continueWithGoogle')
-continueWithGoogle.addEventListener('click', (e) =>
-    Router.load('continueWithGoogle')
-)
-
-const signIn = document.getElementById('SignIn')
-signIn.addEventListener('click', (e) =>
-    Router.load('signIn')
-)
+*/

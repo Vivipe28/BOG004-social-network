@@ -1,5 +1,26 @@
+import { components } from '../View/index.js'
 
+const changeView = (route) => {
+  const container = document.getElementById('container')
+  container.innerHTML = '';
+  switch (route) {
+    case '#/':
+      { return container.appendChild(components.init()) }
+    case
+      '#/buttonLogin':
+      { return container.appendChild(components.buttonLogin()) }
+    case
+      '#/signUp':
+      { return container.appendChild(components.signUp()) }
+    default:
+      break;
+  }
 
+}
+
+export { changeView }
+
+/*
 // Import the functions you need from the SDKs you need
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
@@ -55,3 +76,4 @@ signUp.addEventListener('submit', (e) => {
     });
 })
 
+*/
