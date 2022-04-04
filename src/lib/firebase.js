@@ -38,7 +38,6 @@ const db = getFirestore();
 const dataBase = getDatabase(app);
 export const auth = getAuth();
 const provider = new GoogleAuthProvider();
-
 export const SignUpUser = (email, password) => createUserWithEmailAndPassword(auth, email, password)
   .then(
     (userCredential) => {

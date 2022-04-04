@@ -102,6 +102,7 @@ export default () => {
           await updateDoc(getLikes, {
             likes: arrayRemove(userId),
             likesCounter: likesCount - 1,
+            
           });
         } else {
           await updateDoc(doc, {
