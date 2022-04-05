@@ -12,18 +12,17 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
   onSnapshot,
   deleteDoc,
   doc,
   getDoc,
   updateDoc,
   getDatabase,
-  initializeApp,
   arrayUnion,
   arrayRemove,
   onAuthStateChanged,
 } from './firebase-imports.js';
+import { initializeApp } from './firebase-imports.js'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDOPnedni_lGkXKH8QvH6JV1iTbcAwmJm4',
