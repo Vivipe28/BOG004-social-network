@@ -50,16 +50,16 @@ export default () => {
   formContainer.addEventListener('submit', (e) => {
     // eslint-disable-next-line no-undef
     e.preventDefault();
-    if(postContainer.value !== '') { 
-    if (!editStatus) {
-      saveComment(postContainer.value);
+    if (postContainer.value !== '') {
+      if (!editStatus) {
+        saveComment(postContainer.value);
+      } else {
+        updateComment(id, { comment: postContainer.value });
+        editStatus = false;
+      }
+      errorMessage.innerHTML = '';
     } else {
-      updateComment(id, { comment: postContainer.value });
-      editStatus = false;
-    }
-    errorMessage.innerHTML = '';}
-    else{
-        errorMessage.innerHTML = 'Please write your comment';
+      errorMessage.innerHTML = 'Please write your comment';
     }
     formContainer.reset();
   });
@@ -71,7 +71,7 @@ export default () => {
     querySnapshot.forEach((doc) => {
       const task = doc.data();
       // eslint-disable-next-line no-unused-vars
-      console.log(task)
+      console.log(task);
       html += `
         <div class='commentCreated'>
         <div class= 'headerPost'>
@@ -93,10 +93,10 @@ export default () => {
     const btnsDelete = commentsContainer.querySelectorAll('#btn-delete');
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
+        // eslint-disable-next-line no-alert
         if (window.confirm('¿Are you sure delete this post?')) {
-          deleteComment(dataset.id) ;
+          deleteComment(dataset.id);
         }
-       
       });
     });
 
