@@ -71,6 +71,7 @@ export default () => {
     querySnapshot.forEach((doc) => {
       const task = doc.data();
       // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-console
       console.log(task);
       html += `
         <div class='commentCreated'>

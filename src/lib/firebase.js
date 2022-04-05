@@ -21,9 +21,8 @@ import {
   arrayUnion,
   arrayRemove,
   onAuthStateChanged,
-}
-  // eslint-disable-next-line import/no-duplicates
-  from './firebase-imports.js';
+// eslint-disable-next-line import/no-duplicates
+} from './firebase-imports.js';
 // eslint-disable-next-line import/no-duplicates
 import { initializeApp } from './firebase-imports.js';
 
