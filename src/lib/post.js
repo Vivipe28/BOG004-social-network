@@ -14,22 +14,24 @@ import {
 
 export default () => {
   const post = `
-<form id='form-container'>
-<div class = 'navPost'>
-<h1 class = 'titlePost'>PAPYRUS</h1>
-<button id="logout">Log out</button>
-</div>
-<figure>
-      <img class="IconoPost" src="images/iPhone 13/Logo.png" alt="Icono">
-    </figure>
-<div class = 'postContainer'>
-<label for="comment" id = 'commentText'>Comment!</label>
-<textarea id="task-comment" rows="3" placeholder="Post..."></textarea>
-<button type="submit" id="btn-task-save">Publish!</button>
-</div>
-</form>
-<div id="comments-container"></div>
-`;
+  <img src='${auth.currentUser.photoURL}'>
+  <p class = 'postText'>${auth.currentUser.displayName}</p>
+  <form id='form-container'>
+  <div class = 'navPost'>
+  <h1 class = 'titlePost'>PAPYRUS</h1>
+  <button id="logout">Log out</button>
+  </div>
+  <figure>
+        <img class="IconoPost" src="images/iPhone 13/Logo.png" alt="Icono">
+      </figure>
+  <div class = 'postContainer'>
+  <label for="comment" id = 'commentText'>Comment!</label>
+  <textarea id="task-comment" rows="3" placeholder="Post..."></textarea>
+  <button type="submit" id="btn-task-save">Publish!</button>
+  </div>
+  </form>
+  <div id="comments-container"></div>
+  `;
 
   const taskContainer = document.createElement('div');
   taskContainer.innerHTML = post;
