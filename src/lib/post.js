@@ -59,10 +59,16 @@ export default () => {
     let html = '';
     querySnapshot.forEach((doc) => {
       const task = doc.data();
+      // console.log(task.name);
       // eslint-disable-next-line no-unused-vars
       html += `
         <div class='commentCreated'>
+<<<<<<< HEAD
         <img src="${task.email}">
+=======
+        <img src='${task.email}'>
+        <p class = 'postText'>${task.name}</p>
+>>>>>>> 979a12b8d743b79af48a5e468e59039b3d5cf11b
         <input type="button" value="X" id="btn-delete" data-id="${doc.id}">      
         <p class = 'postText'>${task.comment}</p>
         <div class='commentBtns'>
@@ -94,8 +100,9 @@ export default () => {
     const like = commentsContainer.querySelectorAll('#btn-like');
     like.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        // console.log('se hizo click:', e.target.value);
+        console.log('se hizo click:', e.target.value);
         const userId = auth.currentUser.uid;
+        console.log(userId);
         // console.log('userID: ', userId);
         updateLikeBtn(e.target.value, userId);
       });
