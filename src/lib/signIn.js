@@ -36,6 +36,7 @@ export default () => {
             // eslint-disable-next-line no-alert
             errorM.innerHTML = 'Verifica tu correo';
           } else {
+            alert('Welcome!');
             changeView('#/post');
           }
         })

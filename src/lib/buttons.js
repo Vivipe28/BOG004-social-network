@@ -28,6 +28,5 @@ export default () => {
         alert(errorMessage);
       });
   });
-
   return sectionElement;
 };

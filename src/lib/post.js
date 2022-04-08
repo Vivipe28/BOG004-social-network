@@ -14,24 +14,27 @@ import {
 
 export default () => {
   const post = `
-  <img src='${auth.currentUser.photoURL}'>
-  <p class = 'postText'>${auth.currentUser.displayName}</p>
-  <form id='form-container'>
-  <div class = 'navPost'>
-  <h1 class = 'titlePost'>PAPYRUS</h1>
-  <button id="logout">Log out</button>
-  </div>
-  <figure>
-        <img class="IconoPost" src="images/iPhone 13/Logo.png" alt="Icono">
-      </figure>
-  <div class = 'postContainer'>
-  <label for="comment" id = 'commentText'>Comment!</label>
-  <textarea id="task-comment" rows="3" placeholder="Post..."></textarea>
-  <button type="submit" id="btn-task-save">Publish!</button>
-  </div>
-  </form>
-  <div id="comments-container"></div>
-  `;
+<form id='form-container'>
+<div class = 'navPost'>
+<h1 class = 'titlePost'>PAPYRUS</h1>
+<div class = 'userInfo'>
+<img src='${auth.currentUser.photoURL}' class = 'photoUrl'>
+<p class = 'userName'>${auth.currentUser.displayName}</p>
+<button id="logout">Log out</button>
+</div>
+</div>
+<figure>
+      <img class="IconoPost" src="images/iPhone 13/Logo.png" alt="Icono">
+    </figure>
+<div class = 'postContainer'>
+<label for="comment" id = 'commentText'>Comment!</label>
+<textarea id="task-comment" rows="3" placeholder="Post..."></textarea>
+<span class='errorMessage'></span>
+<button type="submit" id="btn-task-save">Publish!</button>
+</div>
+</form>
+<div id="comments-container"></div>
+`;
 
   const taskContainer = document.createElement('div');
   taskContainer.innerHTML = post;
@@ -39,6 +42,7 @@ export default () => {
   const formContainer = taskContainer.querySelector('#form-container');
   const commentsContainer = taskContainer.querySelector('#comments-container');
   const postContainer = taskContainer.querySelector('#task-comment');
+  const errorMessage = taskContainer.querySelector('.errorMessage');
   // eslint-disable-next-line no-unused-vars
   let editStatus = false;
   let id = '';
@@ -46,11 +50,16 @@ export default () => {
   formContainer.addEventListener('submit', (e) => {
     // eslint-disable-next-line no-undef
     e.preventDefault();
-    if (!editStatus) {
-      saveComment(postContainer.value);
+    if (postContainer.value !== '') {
+      if (!editStatus) {
+        saveComment(postContainer.value);
+      } else {
+        updateComment(id, { comment: postContainer.value });
+        editStatus = false;
+      }
+      errorMessage.innerHTML = '';
     } else {
-      updateComment(id, { comment: postContainer.value });
-      editStatus = false;
+      errorMessage.innerHTML = 'Please write your comment';
     }
     formContainer.reset();
   });
@@ -61,17 +70,22 @@ export default () => {
     let html = '';
     querySnapshot.forEach((doc) => {
       const task = doc.data();
-      // console.log(task.name);
       // eslint-disable-next-line no-unused-vars
+      // eslint-disable-next-line no-console
+      console.log(task);
       html += `
         <div class='commentCreated'>
-        <img src='${task.email}'>
-        <p class = 'postText'>${task.name}</p>
-        <input type="button" value="X" id="btn-delete" data-id="${doc.id}">      
+        <div class= 'headerPost'>
+        <div class ='userInfo'>
+        <img src="${task.email}" class = 'photoUrl'>
+        <p class = 'userName'>${task.name}</p>
+        </div>
+        <input type="button" value="X" id="btn-delete" data-id="${doc.id}">  
+        </div>    
         <p class = 'postText'>${task.comment}</p>
         <div class='commentBtns'>
         <input type="button" value="Edit" id="btn-edit" data-id="${doc.id}">
-        <button id="btn-like" value='${doc.id}'><i class="fas fa-thumbs-up"></i>${task.likesCounter}</button>
+        <button id="btn-like" value='${doc.id}'><i class="fas fa-thumbs-up">&nbsp&nbsp</i>${task.likesCounter}</button>
             </div>
         </div> `;
     });
@@ -80,7 +94,10 @@ export default () => {
     const btnsDelete = commentsContainer.querySelectorAll('#btn-delete');
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
-        deleteComment(dataset.id);
+        // eslint-disable-next-line no-alert
+        if (window.confirm('¿Are you sure delete this post?')) {
+          deleteComment(dataset.id);
+        }
       });
     });
 
@@ -98,9 +115,8 @@ export default () => {
     const like = commentsContainer.querySelectorAll('#btn-like');
     like.forEach((btn) => {
       btn.addEventListener('click', (e) => {
-        console.log('se hizo click:', e.target.value);
+        // console.log('se hizo click:', e.target.value);
         const userId = auth.currentUser.uid;
-        console.log(userId);
         // console.log('userID: ', userId);
         updateLikeBtn(e.target.value, userId);
       });

@@ -12,18 +12,19 @@ import {
   getFirestore,
   collection,
   addDoc,
-  getDocs,
   onSnapshot,
   deleteDoc,
   doc,
   getDoc,
   updateDoc,
   getDatabase,
-  initializeApp,
   arrayUnion,
   arrayRemove,
   onAuthStateChanged,
+// eslint-disable-next-line import/no-duplicates
 } from './firebase-imports.js';
+// eslint-disable-next-line import/no-duplicates
+import { initializeApp } from './firebase-imports.js';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyDOPnedni_lGkXKH8QvH6JV1iTbcAwmJm4',
