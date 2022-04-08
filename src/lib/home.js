@@ -14,6 +14,7 @@ export default () => {
   const taskContainer = document.createElement('div');
   taskContainer.innerHTML = home;
   const taskForm = taskContainer.querySelector('#task-form');
+  // eslint-disable-next-line no-console
   console.log(taskForm);
   taskForm.addEventListener('submit', (e) => {
     e.preventDefault();
