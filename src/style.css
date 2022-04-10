@@ -18,18 +18,29 @@ body {
     align-items: center;
 }
 
+figure{
+    display: flex;
+    justify-content: center;
+    margin: 60px 0;
+}
 .logo {
-    width: 100%;
+    width: 70%;
     height: 100%;
-    margin-top: 50%;
-    margin-bottom: 30px;
+    padding-top: 60px;
 }
 
+@media (min-width: 768px) {
+    .logo {
+        width: 80%;
+        height: 100%;
+        padding-top: 60px;
+    }
+}
+
+
 .title {
-    text-align: center;
     font-size: 3rem;
-    letter-spacing: 0.305em;
-    width: fit-content;
+    letter-spacing: 0.3rem;
 }
 
 footer {
