@@ -57,7 +57,8 @@ export default () => {
         editStatus = false;
       }
       errorMessage.innerHTML = '';
-    } else {
+    }
+    else {
       errorMessage.innerHTML = 'Please write your comment';
     }
     formContainer.reset();
@@ -70,8 +71,6 @@ export default () => {
     querySnapshot.forEach((doc) => {
       const task = doc.data();
       // eslint-disable-next-line no-unused-vars
-      // eslint-disable-next-line no-console
-      console.log(task);
       html += `
         <div class='commentCreated'>
         <div class= 'headerPost'>
@@ -93,10 +92,11 @@ export default () => {
     const btnsDelete = commentsContainer.querySelectorAll('#btn-delete');
     btnsDelete.forEach((btn) => {
       btn.addEventListener('click', ({ target: { dataset } }) => {
-        // eslint-disable-next-line no-alert
         if (window.confirm('¿Are you sure delete this post?')) {
           deleteComment(dataset.id);
+          
         }
+       
       });
     });
 
