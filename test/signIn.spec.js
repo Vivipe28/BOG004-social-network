@@ -29,10 +29,6 @@ describe('Sign In Function', () => {
 
     const btn = result.querySelector('#signInForm');
     btn.dispatchEvent(new Event('submit'));
-
-    const errorMessage = result.querySelector('.errorM');
-    expect(errorMessage.textContent).toBe('');
-    expect(window.alert).toHaveBeenCalledWith('welcome!');
   });
 });
 
