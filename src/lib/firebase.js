@@ -115,6 +115,7 @@ export const updateComment = (id, newFileds) => updateDoc(doc(db, 'comments', id
 export const updateLikeBtn = async (id, userLike) => {
   // console.log('recibe id y uid: ', id, userLike);
   const getPost = await getComment(id);
+  console.log(getPost);
   // console.log('getPost: ', getPost.data());
   // console.log('getPost likescounter: ', getPost.data().likesCounter);
   const uLike = getPost.data().usersLikes;

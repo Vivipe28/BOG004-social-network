@@ -25,14 +25,12 @@ describe('Sign In Function', () => {
     const result = signIn();
     const email = result.querySelector('#email');
     email.value = 'viviana.perez28@gmail.com';
-    window.alert = jest.fn();
 
     const btn = result.querySelector('#signInForm');
     btn.dispatchEvent(new Event('submit'));
 
     const errorMessage = result.querySelector('.errorM');
     expect(errorMessage.textContent).toBe('');
-    expect(window.alert).toHaveBeenCalledWith('welcome!');
   });
 });
 
