@@ -20,7 +20,7 @@ export default () => {
 </form>`;
 
   const signUpContainer = document.createElement('div');
-  signUpContainer.classList = 'divSignUp'
+  signUpContainer.classList = 'divSignUp';
   signUpContainer.innerHTML = viewSignUp;
 
   const formSignUp = signUpContainer.querySelector('#signUpForm');

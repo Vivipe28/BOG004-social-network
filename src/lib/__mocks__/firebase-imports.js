@@ -6,7 +6,7 @@ export const getAuth = () => ({
 });
 export const createUserWithEmailAndPassword = () => Promise.resolve({});
 export const signInWithEmailAndPassword = () => Promise.resolve({});
-export const sendEmailVerification = () => Promise.resolve({});
+export const sendEmailVerification = () => Promise.resolve({ user: '' });
 export const signInWithPopup = () => Promise.resolve({});
 export class GoogleAuthProvider {}
 export const signOut = () => Promise.resolve({});
