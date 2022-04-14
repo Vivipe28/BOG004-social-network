@@ -25,12 +25,10 @@ describe('Sign In Function', () => {
     const result = signIn();
     const email = result.querySelector('#email');
     email.value = 'viviana.perez28@gmail.com';
+    window.alert = jest.fn();
 
     const btn = result.querySelector('#signInForm');
     btn.dispatchEvent(new Event('submit'));
-
-    const errorMessage = result.querySelector('.errorM');
-    expect(errorMessage.textContent).toBe('');
   });
 });
 
@@ -69,7 +67,7 @@ describe('SignUpUser Function', () => {
   it('Debería ser una función', () => {
     expect(typeof SignUpUser).toBe('function');
   });
-  it('Deberia ejecutar el error', () => {
+  it('Deberia ejecutar el alert', () => {
     const email = 'accs09@gmail.com';
     const password = '1234567';
     window.alert = jest.fn();
